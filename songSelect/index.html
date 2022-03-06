@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=0;" />
+		<title>Phigros Electron Editon</title>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<div class="avatarBar expand" id="avatarBar" data-rks="NULL" data-name="GUEST">
+			<div class="avatar"></div>
+		</div>
+		<audio src="" id="slicedAudioElement"></audio>
+		<div class="darkOverlay"></div>
+		<div class="backBtn" onclick="location.href='../chapterSelect/index.html'"></div>
+		<div class="readyToLoadOverlay" id="readyToLoadOverlay"></div>
+		<div class="leftArea">
+			<div class="topLeftBar">
+				<div class="sortMode">默认</div>
+				<div
+					class="settingBtn"
+					onclick="location.href='../settings/index.html'"
+				>
+					设置
+				</div>
+			</div>
+			<!-- style="--historyGrade:url(../assets/images/A15A.png);" -->
+		</div>
+		<div class="rightArea" id="rightArea">
+			<div class="illustrationContainer">
+				<img
+					src="../assets/images/InitialBackground.png"
+					alt=""
+					class="illustration"
+					id="illustration"
+				/>
+			</div>
+			<div class="detailBar unplayed">
+				<div class="levelChooser">
+					<div class="levelItem ez" data-level="1"></div>
+					<div class="levelItem hd" data-level="2"></div>
+					<div class="levelItem in selected" data-level="3"></div>
+					<div class="levelItem at" data-level="4"></div>
+				</div>
+				<div class="score unplayed" data-acc="00.00%"><span data="score">0000000</span></div>
+			</div>
+		</div>
+		<div class="playBtn"></div>
+		<!--
+		<script type="application/javascript;version=1.8">
+			const req = new XMLHttpRequest();
+			req.addEventListener ("load", function () {
+				const data = JSON.parse(this.responseText);
+				console.log(data);
+				document.querySelector('div#avatarBar').setAttribute('data-name', data["userName"]);
+			});
+			req.open("GET", "http://127.0.0.1:796/get/userData/userInfo", true);
+			req.send();
+		</script>
+		-->
+		<script type="module" src="../assets/getUserInfo.js"></script>
+		<script type="module" src="./index.js"></script>
+	</body>
+</html>

@@ -1,0 +1,22 @@
+{
+  "name": "phigros-electron-editon",
+  "version": "0.0.1",
+  "description": "???",
+  "productName": "Phigros Electron Editon",
+  "main": "id.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron .",
+    "build": "electron-packager . --icon=favicon.ico --electronVersion=17.1.0",
+    "build-32": "electron-packager . --icon=favicon.ico --electronVersion=17.1.0 --arch=ia32",
+    "postinstall": "electron-rebuild"
+  },
+  "author": "飞机上的长电视",
+  "license": "ISC",
+  "dependencies": {
+    "electron-store": "^8.0.1",
+    "express": "^4.17.3",
+    "knex": "^1.0.3",
+    "sqlite3": "^5.0.2"
+  }
+}
