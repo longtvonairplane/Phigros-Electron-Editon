@@ -1,0 +1,19 @@
+{
+	"name":"Chronomia",
+	"codename":"cmnia",
+	"artist":"???",
+	"musicFile":"music.wav",
+	"ezRanking":14,
+	"hdRanking":14,
+	"inRanking":14,
+	"atRanking":14,
+	"chartEZ":"Chart_IN.json",
+	"chartHD":"Chart_IN.json",
+	"chartIN":"Chart_IN.json",
+	"chartAT":"Chart_IN.json",
+	"chartLegacy":"Chart_IN.json",
+	"illustration":"Illustration.png",
+	"chartDesigner":"?",
+	"illustrator":"?",
+	"sliceAudioStart":"63.6"
+}

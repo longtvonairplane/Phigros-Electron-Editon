@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="zh-cn">
 	<head>
 		<meta charset="UTF-8" />
@@ -7,7 +8,7 @@
 		<title>Phigros Electron Editon</title>
 		<link rel="stylesheet" href="style.css" />
 	</head>
-	<body>
+	<body style="overflow:hidden">
 		<div class="avatarBar expand" id="avatarBar" data-rks="NULL" data-name="GUEST">
 			<div class="avatar"></div>
 		</div>
@@ -17,7 +18,8 @@
 		<div class="readyToLoadOverlay" id="readyToLoadOverlay"></div>
 		<div class="leftArea">
 			<div class="topLeftBar">
-				<div class="sortMode">默认</div>
+				<div class="sortMode" class=".shit">默认</div>
+				<div class="Autoplay"><input type="checkbox" id="Autoplay"><label for="Autoplay"></label>Autoplay</div>
 				<div
 					class="settingBtn"
 					onclick="location.href='../settings/index.html'"
@@ -38,15 +40,16 @@
 			</div>
 			<div class="detailBar unplayed">
 				<div class="levelChooser">
-					<div class="levelItem ez" data-level="1"></div>
-					<div class="levelItem hd" data-level="2"></div>
-					<div class="levelItem in selected" data-level="3"></div>
-					<div class="levelItem at" data-level="4"></div>
+					<div class="levelItem ez" data-level="1" id="ez"></div>
+					<div class="levelItem hd" data-level="2" id="hd"></div>
+					<div class="levelItem in selected" data-level="3" id="in"></div>
+					<div class="levelItem at" data-level="4" id="at"></div>
 				</div>
 				<div class="score unplayed" data-acc="00.00%"><span data="score">0000000</span></div>
 			</div>
 		</div>
 		<div class="playBtn"></div>
+		<div class = "ap">123</div>
 		<!--
 		<script type="application/javascript;version=1.8">
 			const req = new XMLHttpRequest();

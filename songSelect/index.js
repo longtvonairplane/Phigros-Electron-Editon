@@ -1,6 +1,11 @@
 import { SongList } from "./SongList.js";
 import { gameLevels } from "../constants.js";
 
+document.getElementById("at").style.display = 'none';
+
+let isAP = {ap: ""};
+//const songNum = parsedURLParams.get('songNum');
+
 //加载成绩
 function loadSongScore () {
 	const req = new XMLHttpRequest();
@@ -32,6 +37,15 @@ window.addEventListener("DOMContentLoaded", () => {
 	document.querySelector("div.settingBtn").addEventListener("click", () => {
 		location.href = "../settings/index.html";
 	});
+	/*
+	document.querySelector("div.Autoplay").addEventListener("click", () => {
+		isAP.ap = "";
+		if (isAP !== "y") {
+			isAP.ap = "y";
+		};
+		document.querySelector
+	});
+	*/
 	document.querySelector('#avatarBar').addEventListener("click",(e)=>{
 		var _element=e.target;
 		if (_element.classList.toString().match('avatarBar')==null) {
@@ -236,6 +250,9 @@ document
 			});
 		};
 		playClickedSound.send();
+		if (document.getElementById("Autoplay").checked) {
+			isAP.ap = "y";
+		}
 		setTimeout(() => {
 			location.href =
 				'../whilePlaying/index.html?play=' +
@@ -245,6 +262,8 @@ document
 				'&l=' +
 				window.levelSelected +
 				"&c=" +
-				chapterName;
+				chapterName +
+				"&ap=" + 
+				isAP.ap;
 			}, 2000);
 		});

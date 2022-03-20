@@ -1,0 +1,22 @@
+{
+	"name":"Only my railgun",
+	"codename":"omr",
+	"artist": "fripSide",
+	"musicFile":"32341255.mp3",
+	"ezRanking":13,
+	"hdRanking":13,
+	"inRanking":13,
+	"atRanking":13,
+	"chartEZ":"32341255.json",
+	"chartHD":"32341255.json",
+	"chartIN":"32341255.json",
+	"chartAT":"32341255.json",
+	"chartLegacy":"32341255.json",
+	"illustration":"32341255.jpg",
+	"ezChartDesigner":"Ironman_sm",
+	"hdChartDesigner":"Ironman_sm",
+	"inChartDesigner":"Ironman_sm",
+	"atChartDesigner":"Ironman_sm",
+	"illustrator":"Ironman_sm",
+	"sliceAudioStart":"84.5"
+}

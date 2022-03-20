@@ -1,0 +1,19 @@
+{
+	"name":"Igallta",
+	"codename":"iga",
+	"artist":"???",
+	"musicFile":"music.wav",
+	"ezRanking":16,
+	"hdRanking":16,
+	"inRanking":16,
+	"atRanking":16,
+	"chartEZ":"Chart_AT.json",
+	"chartHD":"Chart_AT.json",
+	"chartIN":"Chart_AT.json",
+	"chartAT":"Chart_AT.json",
+	"chartLegacy":"Chart_AT.json",
+	"illustration":"Illustration.png",
+	"chartDesigner":"?",
+	"illustrator":"?",
+	"sliceAudioStart":"63.6"
+}

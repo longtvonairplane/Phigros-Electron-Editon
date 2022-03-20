@@ -8,7 +8,7 @@ html{
 body{
 	background: url(../assets/images/InitialBackground.png) center center no-repeat;
 	background-size: cover !important;
-	backdrop-filter: blur(15px) brightness(.6);
+	backdrop-filter: blur(15px) contrast(0.6) brightness(0.6);
 	height: 100%;
 	width: 100%;
 	margin: 0;
@@ -24,6 +24,18 @@ body{
 	-ms-user-select:none;
 	user-select:none;
 	transition: all .3s linear;
+}
+body::before {
+	content: '';
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: var(--background) center center no-repeat fixed;
+	background-size: cover;
+	filter: blur(15px) contrast(0.6) brightness(0.6);
+	z-index: -1;
 }
 canvas.canvas#canvas{
 	height: 100%;
@@ -75,13 +87,13 @@ div.pauseOverlay{
 div.pauseOverlay.visable{
 	height: 100vh;
 	width: 100vw;
-	z-index: 999;
+	z-index: 9999;
 	/* filter: contrast(.6)brightness(.6); */
-	backdrop-filter: contrast(.6)brightness(.6);
+	backdrop-filter: contrast(.6) brightness(.6);
 	display: flex;
 	position: fixed;
-	top: 0;
-	left: 0;
+	top: -100;
+	left: -100;
 	justify-content: center;
 	align-items: center;
 	flex-direction: row;
@@ -95,7 +107,7 @@ div.pauseOverlay.visable.readyToResume{
 }
 @keyframes pauseOverlayFadeOut {
 	0%{
-		backdrop-filter: blur(15px);
+		backdrop-filter: blur(150px);
 	}
 	60%{
 		backdrop-filter: blur(0px);
@@ -128,8 +140,8 @@ div#resumeBtn{
 img.flick,
 img.tap,
 img.drag{
-	width: 100px;
-	height: 20px;
+	width: 50px;
+	height: 10px;
 	border-radius: 999px;
 }
 .key2HL{
@@ -181,3 +193,6 @@ div.judgeLine{
 		transform: rotate(360deg);
 	}
 } */
+bgi{
+	backdrop-filter: blur(1px) brightness(.2);
+}

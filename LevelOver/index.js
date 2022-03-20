@@ -25,6 +25,11 @@ window.addEventListener('DOMContentLoaded',()=>{
 	const parsedURLParams=new URLSearchParams(urlParams)
 	//	获取各种数据
 	const play=parsedURLParams.get('play');
+	const ap=parsedURLParams.get('ap')
+	if (ap === "y"){
+		document.querySelector('div#avatarBar').setAttribute('data-name', "Auto");
+		document.querySelector('div#avatarBar').setAttribute('data-rks', "16.03");
+	};
 	const playLevel=gameLevels[parsedURLParams.get('l')];
 	const playLevelString=parsedURLParams.get('l');
 	const score=parseInt(parsedURLParams.get('score'));
@@ -140,7 +145,127 @@ window.addEventListener('DOMContentLoaded',()=>{
 	document.querySelector("#data").innerText=deltaData;
 	console.log('ΔRKS:',deltaRKS);
 	console.log('ΔData(KB):',deltaData);
+	function scoreChange (data) {
+		const req = new XMLHttpRequest();
+		req.addEventListener ("load", function () {
+			return;
+			if (this.responseText === "") {
+				document.querySelector('div.score').setAttribute('data-acc', "00.00%");
+				document.querySelector("div.score.score").querySelectorAll(`[data="score"]`)[0].textContent = "0000000";
+				return;
+			};
+			const data = JSON.parse(this.responseText);
+			document.querySelector('div.score').setAttribute('data-acc', data["acc"]);
+			const aaaaaa = document.querySelector(".score").querySelectorAll(`[data="score"]`);
+			aaaaaa[0].textContent = data["score"];
+		});
+		req.open("GET", `http://127.0.0.1:796/put/${play}-${playResult.playLevelString}/${score}/${accuracy}/0`, true);
+		req.send();
+	};
+	if (ap !== "y") scoreChange();
+	console.log("123");
+	/*
+	//加载旧数据
+	function loadData () {
+		const req_data = new XMLHttpRequest();
+		const req_rks = new XMLHttpRequest();
+		let returns = {data: "", rks: ""};
+		req_data.addEventListener ("load", function () {
+			const data = JSON.parse(req_data.responseText)["data"];
+			returns.data = data;
+		});
+		req_rks.addEventListener ("load", function () {
+			const rks = JSON.parse(req_rks.responseText)["data"];
+			returns.rks = rks;
+			return returns.rks;
+		});
+		req_data.open("GET", `http://127.0.0.1:796/get/userData/data`, true);
+		req_rks.open("GET", `http://127.0.0.1:796/get/userData/mostGoodRKS`, true);
+		req_data.send();req_rks.send();
+		console.log(req_rks.responseText)
+		console.log(returns.rks);
+		return returns.rks;
+	};
+	//rks计算（？？？为啥不能用
+	/*
+	//let dataAndRKS = loadData();
+	//console.log(dataAndRKS);
+	//let b19rks = dataAndRKS["rks"][18];
+	let b19rks = loadData();
+	console.log(b19rks);
+	//nowData = deltaData + dataAndRKS.data; //更新data，现无用
+	if (b19rks < deltaRKS) {
+		b19rks.pop();
+		let fucking = {
+			Value: 1,
+			Tmp: []
+		};
+		for (let i = 0;i < 18;i++) {
+			if (b19rks["" + i] <= deltaRKS && fucking.Value === 0) {
+				fucking.Value -= 1;
+				fucking.Tmp.push(b19rks[i]);
+				for (let j = 18 - i;j > 0;i--) {
+					b19rks.pop()
+				};
+				b19rks.push(deltaRKS);
+				i = 18;
+			};
+		};
+		for (let i = 0;i < fucking.Tmp.length;i++) {
+			b19rks.push(fucking.Tmp[i]);
+		};
+	}
+	console.log(b19rks);
+	*/
+	//上传成绩
+	/*//旧版
+	function scoreChange(data){
+		// 初始化XMLHttpRequest对象
+		createXMLHttpRequest();
+		// 设置请求响应的URL
+		var uri = `http://127.0.0.1/put/score/${playResult.play}`
+		// 设置处理响应的回调函数
+		xmlrequest.onreadystatechange = processResponse;
+		// 设置以POST方式发送请求，并打开连接
+		xmlrequest.open("POST", uri, true); 
+		// 设置POST请求的请求头
+		xmlrequest.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+		// 发送请求
+		xmlrequest.send(JSON.stringify(data));
+		console.log("good...");
+	};
+	*/
+	/*
+	//加载成绩
+	function loadSongScore () {
+		const req = new XMLHttpRequest();
+		let datas = {
+			score: score,
+			rank: grade,
+			acc: accuracy + "%",
+			racc: +accuracy
+		};
+		req.addEventListener ("load", function () {
+			if (this.responseText === "") {
+				scoreChange(datas);
+				return;
+			};
+			const data = JSON.parse(this.responseText);
+			if (data["score"] < score && data["racc"] >= accuracy) {
+				datas.score = data["score"];
+			} else if (data["score"] >= score && data["racc"] < accuracy) {
+				datas.acc = data["acc"];
+				datas.racc = data["racc"];
+			} else if (data["score"] >= score && data["racc"] >= accuracy) return;
+			scoreChange(datas);
 
+		});
+		req.open("GET", `http://127.0.0.1:796/get/scores/${playResult.play}-${playResult.playLevelString}`, true);
+		//console.log(`http://127.0.0.1:796/get/scores/${playResult.play}-${playResult.playLevelString}`);
+		req.send();
+	};
+	loadSongScore();
+	*/
 });
 // window.onresize=function(){
 // 	//	自动缩放

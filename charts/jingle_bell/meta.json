@@ -1,0 +1,22 @@
+{
+	"name":"ジングルベル(Jingle Bell)",
+	"codename":"jingle_bell",
+	"artist": "A-39",
+	"musicFile":"music.wav",
+	"ezRanking":7,
+	"hdRanking":12,
+	"inRanking":14,
+	"atRanking":14,
+	"chartEZ":"Chart_IN.json",
+	"chartHD":"Chart_IN.json",
+	"chartIN":"Chart_IN.json",
+	"chartAT":"Chart_IN.json",
+	"chartLegacy":"Chart_AT.json",
+	"illustration":"Illustration.png",
+	"ezChartDesigner":"RDRT -p 19:08:31",
+	"hdChartDesigner":"RDRT -p 20:02:21",
+	"inChartDesigner":"NerSANTA vs. BarbaeianerSLEDGE",
+	"atChartDesigner":"NerSANTA vs. BarbaeianerSLEDGE",
+	"illustrator":"爱39的Konya",
+	"sliceAudioStart":"84.5"
+}

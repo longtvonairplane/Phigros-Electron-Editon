@@ -1,0 +1,19 @@
+{
+	"name":"dB doll",
+	"codename":"dbd",
+	"artist":"???",
+	"musicFile":"music.wav",
+	"ezRanking":13,
+	"hdRanking":13,
+	"inRanking":13,
+	"atRanking":13,
+	"chartEZ":"Chart_AT.json",
+	"chartHD":"Chart_AT.json",
+	"chartIN":"Chart_AT.json",
+	"chartAT":"Chart_AT.json",
+	"chartLegacy":"Chart_AT.json",
+	"illustration":"Illustration.png",
+	"chartDesigner":"?",
+	"illustrator":"?",
+	"sliceAudioStart":"63.6"
+}

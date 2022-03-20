@@ -1,0 +1,19 @@
+{
+	"name":"Cthuga",
+	"codename":"ct",
+	"artist":"idn",
+	"musicFile":"music.wav",
+	"ezRanking":15,
+	"hdRanking":15,
+	"inRanking":15,
+	"atRanking":15,
+	"chartEZ":"Chart_AT.json",
+	"chartHD":"Chart_AT.json",
+	"chartIN":"Chart_IN.json",
+	"chartAT":"Chart_AT.json",
+	"chartLegacy":"Chart_AT.json",
+	"illustration":"Illustration.png",
+	"chartDesigner":"?",
+	"illustrator":"?",
+	"sliceAudioStart":"63.6"
+}

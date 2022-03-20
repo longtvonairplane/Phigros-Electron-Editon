@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 				clickAudioElem.play();
 				document.querySelector('div.darkOverlay').classList.add('fadeIn');
 				setTimeout(() => {
-					location.href='../songSelect/index.html?c='+e.target.getAttribute('data-codename');
+					location.href='../songSelect/index.html?songNum=0&c='+e.target.getAttribute('data-codename');
 				}, 400);
 			}
 		});

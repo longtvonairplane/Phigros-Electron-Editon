@@ -1,0 +1,19 @@
+{
+	"name":"花",
+	"codename":"flowers",
+	"artist":"草",
+	"musicFile":"music.wav",
+	"ezRanking":14,
+	"hdRanking":14,
+	"inRanking":14,
+	"atRanking":14,
+	"chartEZ":"Chart_AT.json",
+	"chartHD":"Chart_AT.json",
+	"chartIN":"Chart_AT.json",
+	"chartAT":"Chart_AT.json",
+	"chartLegacy":"Chart_IN.json",
+	"illustration":"Illustration.png",
+	"chartDesigner":"?",
+	"illustrator":"?",
+	"sliceAudioStart":"63.6"
+}

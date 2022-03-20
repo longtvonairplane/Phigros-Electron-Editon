@@ -1,0 +1,22 @@
+{
+	"name":"Introduction by ltv",
+	"codename":"introltv",
+	"artist": "姜米條",
+	"musicFile":"46181970.ogg",
+	"ezRanking":2,
+	"hdRanking":2,
+	"inRanking":2,
+	"atRanking":2,
+	"chartEZ":"46181970.json",
+	"chartHD":"46181970.json",
+	"chartIN":"46181970.json",
+	"chartAT":"46181970.json",
+	"chartLegacy":"46181970.pec",
+	"illustration":"46181970.jpg",
+	"ezChartDesigner":"飞机上的长电视",
+	"hdChartDesigner":"飞机上的长电视",
+	"inChartDesigner":"飞机上的长电视",
+	"atChartDesigner":"飞机上的长电视",
+	"illustrator":"Phigros ???",
+	"sliceAudioStart":"84.5"
+}

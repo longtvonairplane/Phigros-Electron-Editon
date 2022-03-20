@@ -98,6 +98,15 @@ var Renderer = { //存放谱面
 var qwq=[];
 var chartLine,chartLineData;
 
+//要不要请奥托先生
+let isAutoplay = new URLSearchParams(new URL(location.href).search).get("ap");
+const autoplay = {"checked": isAutoplay};
+/*
+if (isAutoplay === "Autoplay") {
+	const autoplay = {"checked": true};
+} else
+*/
+
 const upload = document.getElementById("upload");	//上载input
 const uploads = document.getElementById("uploads");	//整个上载条子
 const mask = document.getElementById("mask");	//下面那行字
@@ -117,7 +126,7 @@ const inputIllustrator = document.getElementById("input-illustrator");	//曲绘
 const inputOffset = document.getElementById("input-offset");	//偏移率
 const showPoint = document.getElementById("showPoint");	//	显示定位点
 const lineColor = document.getElementById("lineColor");	//FC/AP指示器
-const autoplay ={'checked':false};	//奥托普雷
+//const autoplay ={'checked':false};	//奥托普雷
 const hyperMode = document.getElementById("hyperMode");	//研判
 const showTransition = document.getElementById("showTransition");	//是否开启过度动画
 // const bgs = {};
@@ -1350,7 +1359,11 @@ function loop() {
 	ctx.globalAlpha = 0.8;
 	ctx.textAlign = "right";
 	ctx.textBaseline = "middle";
-	ctx.fillText(`Phigros Electron Edition by 飞机上的长电视`, (canvas.width + canvasos.width) / 2 - lineScale * 0.1, canvas.height - lineScale * 0.2);
+	if (isAutoplay === "y") {
+		ctx.fillText(`(Autoplaying)Phigros Electron Edition by lchzh3473 & 飞机上的长电视`, (canvas.width + canvasos.width) / 2 - lineScale * 0.1, canvas.height - lineScale * 0.2);
+	} else {
+		ctx.fillText(`Phigros Electron Edition by lchzh3473 & 飞机上的长电视`, (canvas.width + canvasos.width) / 2 - lineScale * 0.1, canvas.height - lineScale * 0.2);
+	}
 	stopDrawing = requestAnimationFrame(loop); //回调更新动画
 }
 
@@ -1652,7 +1665,7 @@ function qwqdraw2() {
 	// console.log(rks);
 	// localStorage.setItem('rks',rks);
 	//	直接跳转到LevelOver
-	location.href=`../LevelOver/index.html?play=${new URLSearchParams(new URL(location.href).search).get('play')}&l=${new URLSearchParams(new URL(location.href).search).get('l')}&score=${stat.scoreStr}&mc=${stat.maxcombo}&p=${stat.noteRank[5]+stat.noteRank[4]+stat.noteRank[1]}&g=${stat.noteRank[7]+stat.noteRank[3]}&b=${stat.noteRank[6]}&e=${stat.noteRank[7]}&m=${stat.noteRank[2]}&c=${new URLSearchParams(new URL(location.href).search).get('c')}`;
+	location.href=`../LevelOver/index.html?play=${new URLSearchParams(new URL(location.href).search).get('play')}&l=${new URLSearchParams(new URL(location.href).search).get('l')}&score=${stat.scoreStr}&mc=${stat.maxcombo}&p=${stat.noteRank[5]+stat.noteRank[4]+stat.noteRank[1]}&g=${stat.noteRank[7]+stat.noteRank[3]}&b=${stat.noteRank[6]}&e=${stat.noteRank[7]}&m=${stat.noteRank[2]}&c=${new URLSearchParams(new URL(location.href).search).get('c')}&ap=${isAutoplay}`;
 	return;
 	fucktemp = true;
 	btnPause.click(); //isPaused = true;
@@ -1690,6 +1703,7 @@ function qwqdraw2() {
 	}
 }
 
+/*
 function qwqdraw3(statData) {
 	ctxos.resetTransform();
 	ctxos.globalCompositeOperation = "source-over";
@@ -1790,6 +1804,177 @@ function qwqdraw3(statData) {
 	ctxos.globalAlpha = 1;
 	ctxos.fillStyle = "#000";
 	ctxos.drawImage(Renderer.bgImage, ...adjustSize(Renderer.bgImage, canvasos, 1));
+	ctxos.fillRect(0, 0, canvasos.width, canvasos.height);
+}
+*/
+function qwqdraw3(statData) {
+	ctxos.resetTransform();
+	ctxos.globalCompositeOperation = 'source-over';
+	ctxos.clearRect(0, 0, canvasos.width, canvasos.height);
+	ctxos.globalAlpha = 1;
+	if (document.getElementById('imageBlur').checked)
+		ctxos.drawImage(
+			Renderer.bgImageBlur,
+			...adjustSize(Renderer.bgImageBlur, canvasos, 1)
+		);
+	else
+		ctxos.drawImage(
+			Renderer.bgImage,
+			...adjustSize(Renderer.bgImage, canvasos, 1)
+		);
+	ctxos.fillStyle = '#000'; //背景变暗
+	ctxos.globalAlpha =
+		selectglobalalpha.value == '' ? 0.6 : selectglobalalpha.value; //背景不透明度
+	ctxos.fillRect(0, 0, canvasos.width, canvasos.height);
+	ctxos.globalCompositeOperation = 'destination-out';
+	ctxos.globalAlpha = 1;
+	const k = 3.7320508075688776; //tan75°
+	ctxos.setTransform(
+		canvasos.width - canvasos.height / k,
+		0,
+		-canvasos.height / k,
+		canvasos.height,
+		canvasos.height / k,
+		0
+	);
+	ctxos.fillRect(
+		0,
+		0,
+		1,
+		tween.easeOutCubic(range((qwqEnd.second - 0.13) * 0.94))
+	);
+	ctxos.resetTransform();
+	ctxos.globalCompositeOperation = 'destination-over';
+	const qwq0 = (canvasos.width - canvasos.height / k) / (16 - 9 / k);
+	ctxos.setTransform(
+		qwq0 / 120,
+		0,
+		0,
+		qwq0 / 120,
+		wlen - qwq0 * 8,
+		hlen - qwq0 * 4.5
+	); //?
+	ctxos.drawImage(res['LevelOver4'], 183, 42, 1184, 228);
+	ctxos.globalAlpha = range((qwqEnd.second - 0.27) / 0.83);
+	ctxos.drawImage(res['LevelOver1'], 102, 378);
+	ctxos.globalCompositeOperation = 'source-over';
+	ctxos.globalAlpha = 1;
+	ctxos.drawImage(
+		res['LevelOver5'],
+		700 * tween.easeOutCubic(range(qwqEnd.second * 1.25)) - 369,
+		91,
+		20,
+		80
+	);
+	//歌名和等级
+	ctxos.fillStyle = '#fff';
+	ctxos.textBaseline = 'middle';
+	ctxos.textAlign = 'left';
+	ctxos.font = '80px Mina';
+	ctxos.fillText(
+		inputName.value || inputName.placeholder,
+		700 * tween.easeOutCubic(range(qwqEnd.second * 1.25)) - 320,
+		145
+	);
+	ctxos.font = '30px Mina';
+	ctxos.fillText(
+		inputLevel.value || inputLevel.placeholder,
+		700 * tween.easeOutCubic(range(qwqEnd.second * 1.25)) - 317,
+		208
+	);
+	//Rank图标
+	ctxos.globalAlpha = range((qwqEnd.second - 1.87) * 3.75);
+	const qwq2 = 293 + range((qwqEnd.second - 1.87) * 3.75) * 100;
+	const qwq3 = 410 - range((qwqEnd.second - 1.87) * 2.14) * 164;
+	ctxos.drawImage(
+		res['LevelOver3'],
+		661 - qwq2 / 2,
+		545 - qwq2 / 2,
+		qwq2,
+		qwq2
+	);
+	ctxos.drawImage(
+		res['Ranks'][stat.rankStatus],
+		661 - qwq3 / 2,
+		545 - qwq3 / 2,
+		qwq3,
+		qwq3
+	);
+	//各种数据
+	ctxos.globalAlpha = range((qwqEnd.second - 0.87) * 2.5);
+	ctxos.fillStyle = statData[0] ? '#18ffbf' : '#fff';
+	ctxos.fillText(statData[0] ? 'NEW BEST' : 'BEST', 898, 428);
+	ctxos.fillStyle = '#fff';
+	ctxos.textAlign = 'center';
+	ctxos.fillText(statData[1], 1180, 428);
+	ctxos.globalAlpha = range((qwqEnd.second - 1.87) * 2.5);
+	ctxos.textAlign = 'right';
+	ctxos.fillText(statData[2], 1414, 428);
+	ctxos.globalAlpha = range((qwqEnd.second - 0.95) * 1.5);
+	ctxos.textAlign = 'left';
+	ctxos.fillText(stat.accStr, 352, 545);
+	ctxos.fillText(stat.maxcombo, 1528, 545);
+	if (statData[3]) {
+		ctxos.fillStyle = '#fe4365';
+		ctxos.fillText('AUTO PLAY', 1355, 590);
+	} else if (stat.lineStatus == 1) {
+		ctxos.fillStyle = '#ffc500';
+		ctxos.fillText('ALL  PERFECT', 1355, 590);
+	} else if (stat.lineStatus == 2) {
+		ctxos.fillStyle = '#91ff8f';
+		ctxos.fillText('ALL  PERFECT', 1355, 590);
+	} else if (stat.lineStatus == 3) {
+		ctxos.fillStyle = '#00bef1';
+		ctxos.fillText('FULL  COMBO', 1355, 590);
+	}
+	ctxos.fillStyle = '#fff';
+	ctxos.textAlign = 'center';
+	ctxos.font = '86px Mina';
+	ctxos.globalAlpha = range((qwqEnd.second - 1.12) * 2.0);
+	ctxos.fillText(stat.scoreStr, 1075, 554);
+	ctxos.font = '26px Mina';
+	ctxos.globalAlpha = range((qwqEnd.second - 0.87) * 2.5);
+	ctxos.fillText(stat.perfect, 891, 645);
+	ctxos.globalAlpha = range((qwqEnd.second - 1.07) * 2.5);
+	ctxos.fillText(stat.good, 1043, 645);
+	ctxos.globalAlpha = range((qwqEnd.second - 1.27) * 2.5);
+	ctxos.fillText(stat.noteRank[6], 1196, 645);
+	ctxos.globalAlpha = range((qwqEnd.second - 1.47) * 2.5);
+	ctxos.fillText(stat.noteRank[2], 1349, 645);
+	ctxos.font = '22px Mina';
+	const qwq4 = range(
+		(qwq[3] > 0 ? qwqEnd.second - qwq[3] : 0.2 - qwqEnd.second - qwq[3]) *
+			5.0
+	);
+	ctxos.globalAlpha = 0.8 * range((qwqEnd.second - 0.87) * 2.5) * qwq4;
+	ctxos.fillStyle = '#696';
+	ctxos.fill(
+		new Path2D(
+			'M841,718s-10,0-10,10v80s0,10,10,10h100s10,0,10-10v-80s0-10-10-10h-40l-10-20-10,20h-40z'
+		)
+	);
+	ctxos.globalAlpha = 0.8 * range((qwqEnd.second - 1.07) * 2.5) * qwq4;
+	ctxos.fillStyle = '#669';
+	ctxos.fill(
+		new Path2D(
+			'M993,718s-10,0-10,10v80s0,10,10,10h100s10,0,10-10v-80s0-10-10-10h-40l-10-20-10,20h-40z'
+		)
+	);
+	ctxos.fillStyle = '#fff';
+	ctxos.globalAlpha = range((qwqEnd.second - 0.97) * 2.5) * qwq4;
+	ctxos.fillText('Early: ' + stat.noteRank[5], 891, 755);
+	ctxos.fillText('Late: ' + stat.noteRank[1], 891, 788);
+	ctxos.globalAlpha = range((qwqEnd.second - 1.17) * 2.5) * qwq4;
+	ctxos.fillText('Early: ' + stat.noteRank[7], 1043, 755);
+	ctxos.fillText('Late: ' + stat.noteRank[3], 1043, 788);
+	ctxos.resetTransform();
+	ctxos.globalCompositeOperation = 'destination-over';
+	ctxos.globalAlpha = 1;
+	ctxos.fillStyle = '#000';
+	ctxos.drawImage(
+		Renderer.bgImage,
+		...adjustSize(Renderer.bgImage, canvasos, 1)
+	);
 	ctxos.fillRect(0, 0, canvasos.width, canvasos.height);
 }
 
@@ -2421,3 +2606,35 @@ function csv2array(data, isObject) {
 	}
 	return qwq;
 }
+
+//	获取曲绘
+console.log('Fetching illustration:', meta['illustration']);
+document.body.setAttribute(
+	'style',
+	'--background: url(' +
+		encodeURI(
+			'../charts/' +
+				meta['codename'] +
+				'/' +
+				meta['illustration']
+		) +
+		')'
+);
+fetch(
+	'../charts/' +
+		meta['codename'] +
+		'/' +
+		meta['illustration']
+)
+	.then((response) => response.blob())
+	.then((blob) => {
+		createImageBitmap(blob).then((img) => {
+			Renderer.bgImage = img;
+			createImageBitmap(imgBlur(img)).then((imgBlur) => {
+				Renderer.bgImageBlur = imgBlur;
+			});
+		});
+	})
+	.catch((error) => {
+		alert('无法获取曲绘，原因是：\n' + error);
+	});

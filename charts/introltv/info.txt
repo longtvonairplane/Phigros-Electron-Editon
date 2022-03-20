@@ -1,0 +1,9 @@
+#
+Name: Introduction
+Path: 46181970
+Song: 46181970.ogg
+Picture: 46181970.jpg
+Chart: 46181970.json
+Level: LTV Lv.?
+Composer: 姜米條
+Charter: 飞机上的长电视

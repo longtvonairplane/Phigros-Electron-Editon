@@ -21,6 +21,12 @@ function loadSongScore () {
 	req.send();
 };
 
+// 获取at曲目列表
+var isAT = new XMLHttpRequest();
+isAT.open("GET", "../charts/" + "sth" + ".json", false);
+isAT.send();
+var ats = JSON.parse(isAT.responseText);
+
 function SongList(defaultLevel = "ez") {
 	const listElement = document.createElement("div");
 	listElement.id = "songList";
@@ -82,6 +88,14 @@ function SongList(defaultLevel = "ez") {
 		}, 15000);
 
 		loadSongScore()
+
+		console.log(window.songCodeNameList[id]);
+		if (ats[window.songCodeNameList[id]] === undefined) {
+			document.getElementById("at").style.display = 'none';
+		} else {
+			document.getElementById("at").style.display = '';
+		};
+
 		selected = id;
 	}
 

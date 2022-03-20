@@ -30,6 +30,7 @@ div.retryBtn{
 	width: 100px;
 	height: 50px;
 	z-index: 1;
+	-webkit-user-drag: none;
 }
 div.retryBtn::before{
 	content: '';
@@ -42,6 +43,8 @@ div.retryBtn::before{
 	z-index: 1;
 	transform: skew(-15deg);
 	filter: drop-shadow(#fff 5px 0);
+	user-select:none;
+	-webkit-user-drag: none;
 }
 div.retryBtn::after{
 	content: '';
@@ -54,6 +57,8 @@ div.retryBtn::after{
 	background-size: contain;
 	transform: scale(.5);
 	z-index: 5;
+	user-select:none;
+	-webkit-user-drag: none;
 }
 div.backBtn{
 	position: fixed;
@@ -62,6 +67,8 @@ div.backBtn{
 	width: 100px;
 	height: 50px;
 	z-index: 1;
+	user-select:none;
+	-webkit-user-drag: none;
 }
 div.backBtn::before{
 	content: '';
@@ -74,6 +81,8 @@ div.backBtn::before{
 	z-index: 1;
 	transform: skew(-15deg);
 	filter: drop-shadow(#fff -5px 0);
+	user-select:none;
+	-webkit-user-drag: none;
 }
 div.backBtn::after{
 	content: '';
@@ -86,6 +95,8 @@ div.backBtn::after{
 	background-size: contain;
 	transform: scale(.5);
 	z-index: 5;
+	user-select:none;
+	-webkit-user-drag: none;
 }
 div.avatarBar{
 	position: fixed;
@@ -101,9 +112,11 @@ div.avatarBar{
 	justify-content: space-between;
 	align-items: center;
 	transition: all .3s ease-in-out;
+	user-select:none;
 }
 div.avatarBar.expand{
 	padding-left: 20px;
+	user-select:none;
 }
 div.avatarBar.expand::before{
 	content: attr(data-name);
@@ -112,10 +125,12 @@ div.avatarBar.expand::before{
 	font-size: 1.3rem;
 	transform: skew(15deg);
 	margin-right: 0.8em;
+	user-select:none;
 }
 div.avatarBar::before{
 	content: attr(data-name);
 	width: 0;
+	user-select:none;
 }
 div.avatarBar::after{
 	content: attr(data-rks);
@@ -127,6 +142,7 @@ div.avatarBar::after{
 	color: #000;
 	background: #FFF;
 	z-index: 10;
+	user-select:none;
 }
 div.avatarBar>div.avatar{
 	height: 100%;
@@ -139,6 +155,7 @@ div.avatarBar>div.avatar{
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	user-select:none;
 }
 div.avatarBar>div.avatar::before,
 div.avatarBar>div.avatar::after{
@@ -150,6 +167,7 @@ div.avatarBar>div.avatar::after{
 	transform: skew(-15deg) translateX(-10px);
 	margin: 0;
 	padding: 0;
+	user-select:none;
 }
 div.avatarBar>div.avatar::after{
 	transform: skew(-15deg) translateX(10px);
@@ -185,6 +203,8 @@ div.bad,
 div.miss,
 div.moreDetail{
 	transform: skew(15deg);
+	user-select:none;
+	-webkit-user-drag: none;
 }
 div.leftPart{
 	height: 100%;
@@ -212,6 +232,8 @@ img.songImg{
     margin: -10%;
 	transform: skew(15deg);
 	object-fit: cover;
+	user-select:none;
+	-webkit-user-drag: none;
 }
 div.leftPart>div.songName{
 	position: absolute;
@@ -225,6 +247,7 @@ div.leftPart>div.songName{
 	font-size: 1.5rem;
 	transform: skew(15deg);
 	z-index: 1;
+	user-select:none;
 }
 div.leftPart>div.levelString{
 	position: absolute;
@@ -233,6 +256,7 @@ div.leftPart>div.levelString{
 	font-size: 0.8rem;
 	transform: skew(15deg);
 	z-index: 1;
+	user-select:none;
 }
 div.scoreOuterContainer{
 	display: flex;
@@ -241,6 +265,7 @@ div.scoreOuterContainer{
 	width: 50%;
 	transform: skew(-15deg, 0deg);
 	margin-left: 20px;
+	user-select:none;
 }
 div.scoreFrame{
 	display: flex;
@@ -255,15 +280,18 @@ div.scoreFrame{
 	/* clip-path: polygon(40px 0, 100% 0, 350px 100%, 0 100%); */
 	animation: slideIn .8s linear,
 	slide .7s ease-out;
+	user-select:none;
 }
 div.score{
 	font-size: 48px;
+	user-select:none;
 }
 img.grade{
 	height: 100%;
 	transition: .6s all ease-in;
 	object-fit: scale-down;
 	animation: scaleDown .8s cubic-bezier(0, 0, 1, 0.25);
+	user-select:none;
 }
 @keyframes scaleDown {
 	0%{
@@ -300,10 +328,12 @@ div.maxCombo{
 	justify-content: center;
 	align-items: flex-start;
 	line-height: 14px;
+	user-select:none;
 }
 div.maxCombo::after{
 	content: 'Max Combo';
 	font-size: 10px;
+	user-select:none;
 }
 div.accu{
 	display: flex;
@@ -311,10 +341,12 @@ div.accu{
 	justify-content: center;
 	align-items: flex-end;
 	line-height: 14px;
+	user-select:none;
 }
 div.accu::after{
 	content: 'Accuracy';
 	font-size: 10px;
+	user-select:none;
 }
 
 div.detailFrame{
@@ -331,6 +363,7 @@ div.detailFrame{
 	/* clip-path: polygon(12px 0, 100% 0, 355px 100%, 0 100%); */
 	animation: slideIn 1.4s linear,
 		slide .9s ease-out;
+	user-select:none;
 }
 
 div.perfect,
@@ -343,53 +376,62 @@ div.moreDetail{
 	justify-content: center;
 	align-items: center;
 	line-height: 14px;
+	user-select:none;
 }
 
 div.perfect::after{
 	content: 'Perfect';
 	font-size: 10px;
+	user-select:none;
 }
 div.good::after{
 	content: 'Good';
 	font-size: 10px;
+	user-select:none;
 }
 div.bad::after{
 	content: 'Bad';
 	font-size: 10px;
+	user-select:none;
 }
 div.miss::after{
 	content: 'Miss';
 	font-size: 10px;
+	user-select:none;
 }
 div.early,
 div.late{
 	display: flex;
 	flex-direction: row;
 	font-size: 10px;
+	user-select:none;
 	
 }
 div.early::before{
 	content: 'Early\3000\3000\3000';
+	user-select:none;
 }
 div.late::before{
 	content: 'Late\3000\3000\3000';
+	user-select:none;
 }
 
 div.extraInfo{
 	position: fixed;
-	width: 200px;
-	padding: 10px 20px 10px 20px;
-	bottom: 30px;
+	width: 400px;
+	padding: 12.5px 20px 12.5px 20px;
+	bottom: 20px;
 	background: rgba(0,0,0,.40);
 	border-right: 2.5px #FFF solid;
 	border-left: 2.5px #FFF solid;
 	transform: skew(-15deg);
-	animation: extract 2s ease-out;
+	animation: extract 1s ease-out;
 	white-space: nowrap;
 	overflow: hidden;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	user-select:none;
 }
 @keyframes extract {
 	0%{

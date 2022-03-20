@@ -1,0 +1,9 @@
+#
+Name: Only my railgun
+Path: 32341255
+Song: 32341255.mp3
+Picture: 32341255.jpg
+Chart: 32341255.json
+Level: IN Lv.13
+Composer: fripSide
+Charter: Ironman_sm
